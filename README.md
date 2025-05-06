@@ -1,5 +1,4 @@
 # Movie Sentiment Analyzer 
-
 A Python GUI app that uses NLP (Natural Language Processing) to analyze the sentiment of movie reviews.
 ##  Features
 - Analyze review sentiment using VADER (NLTK)
