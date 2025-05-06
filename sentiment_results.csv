@@ -1,0 +1,19 @@
+Review,Sentiment,Compound Score
+better,Positive,0.44
+amazing,Positive,0.59
+not so good,Negative,-0.39
+just fine,Positive,0.2
+fine,Positive,0.2
+neutral,Neutral,0.0
+gracefull,Neutral,0.0
+good,Positive,0.44
+"the movie was not good at all, it also had some problem",Negative,-0.6256
+worst,Negative,-0.6249
+fabulous,Positive,0.5267
+the story line of this movie was good,Positive,0.4404
+2025-05-02 12:19:28,best,Positive,0.6369,5
+2025-05-02 12:19:51,fine,Positive,0.2023,5
+2025-05-02 12:19:59,fine,Positive,0.2023,3
+2025-05-02 12:20:25,so so,Neutral,0.0,3
+2025-05-02 12:28:30,ambitious and inspiring,Positive,0.7096,4
+2025-05-02 12:31:11,graceful,Positive,0.4588,3
