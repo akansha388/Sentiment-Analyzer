@@ -8,12 +8,12 @@ import os
 from datetime import datetime
 import pyttsx3
 
-# Initialize Sentiment Analyzer and Text-to-Speech
+
 nltk.download('vader_lexicon')
 sia = SentimentIntensityAnalyzer()
 engine = pyttsx3.init()
 
-# Determine sentiment from compound score
+
 def determine_sentiment(compound_score):
     if compound_score > 0.05:
         return "Positive"
@@ -22,12 +22,12 @@ def determine_sentiment(compound_score):
     else:
         return "Neutral"
 
-# Speak the sentiment
+
 def speak_result(sentiment, score):
     engine.say(f"The sentiment is {sentiment} with a score of {score}")
     engine.runAndWait()
 
-# Show sentiment breakdown chart
+
 def show_chart(scores):
     labels = ['Negative', 'Neutral', 'Positive']
     values = [scores['neg'], scores['neu'], scores['pos']]
@@ -43,7 +43,7 @@ def show_chart(scores):
     plt.savefig("sentiment_chart.png")
     plt.show()
 
-# Analyze sentiment from input
+
 def analyze_sentiment():
     review = entry.get("1.0", tk.END).strip()
     rating = rating_var.get()
@@ -58,7 +58,7 @@ def analyze_sentiment():
     save_result(review, sentiment, compound, rating)
     speak_result(sentiment, compound)
 
-# Save result to CSV
+
 def save_result(review, sentiment, score, rating):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     file_exists = os.path.isfile("sentiment_results.csv")
@@ -68,12 +68,12 @@ def save_result(review, sentiment, score, rating):
             writer.writerow(["Timestamp", "Review", "Sentiment", "Compound Score", "Rating"])
         writer.writerow([timestamp, review, sentiment, score, rating])
 
-# Clear input
+
 def clear_input():
     entry.delete("1.0", tk.END)
     result_label.config(text="")
 
-# View history window
+
 def view_history():
     if not os.path.isfile("sentiment_results.csv"):
         messagebox.showinfo("History", "No sentiment analysis history found.")
@@ -83,7 +83,7 @@ def view_history():
     history_window.title("Sentiment Analysis History")
     history_window.geometry("800x600")
 
-    # Top control panel
+    
     control_frame = tk.Frame(history_window)
     control_frame.pack(pady=5)
 
@@ -127,7 +127,7 @@ def view_history():
         elif sort_by == "Compound Score":
             results.sort(key=lambda x: x[3], reverse=True)
         else:
-            results.sort(key=lambda x: x[0], reverse=True)  # Timestamp
+            results.sort(key=lambda x: x[0], reverse=True) 
 
         text_area.insert(tk.END, "Timestamp\tSentiment\tScore\tRating\tReview\n", "header")
         for timestamp, review, sentiment, score, rating in results:
@@ -139,11 +139,11 @@ def view_history():
 
     tk.Button(control_frame, text="Search", command=search_and_display).grid(row=0, column=6, padx=5)
 
-    # Scrollable text area
+   
     text_area = scrolledtext.ScrolledText(history_window, wrap=tk.WORD, font=('Courier New', 10))
     text_area.pack(expand=True, fill='both', padx=10, pady=10)
 
-    # Tag styles
+  
     text_area.tag_configure("positive", foreground="green", font=('Courier New', 10, 'bold'))
     text_area.tag_configure("negative", foreground="red", font=('Courier New', 10, 'bold'))
     text_area.tag_configure("neutral", foreground="gray", font=('Courier New', 10, 'bold'))
@@ -151,7 +151,7 @@ def view_history():
 
     search_and_display()
 
-# GUI Setup
+
 root = tk.Tk()
 root.title("Movie Sentiment Analyzer")
 root.geometry("500x500")
