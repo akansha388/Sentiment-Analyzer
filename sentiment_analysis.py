@@ -5,6 +5,7 @@ from tkinter import messagebox, scrolledtext
 import matplotlib.pyplot as plt
 import csv
 import os
+import requests
 from datetime import datetime
 import pyttsx3
 
